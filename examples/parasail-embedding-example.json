@@ -1,0 +1,26 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.parasail.io/v1/embeddings",
+    "headers": {
+      "Authorization": "Bearer $PARASAIL_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "model": "parasail-bge-large-en",
+      "input": ["Parasail provides serverless GPU inference."]
+    }
+  },
+  "response": {
+    "object": "list",
+    "data": [
+      {
+        "object": "embedding",
+        "index": 0,
+        "embedding": [0.0123, -0.0456, 0.0789]
+      }
+    ],
+    "model": "parasail-bge-large-en",
+    "usage": { "prompt_tokens": 8, "total_tokens": 8 }
+  }
+}

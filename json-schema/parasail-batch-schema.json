@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/parasail-ai/main/json-schema/parasail-batch-schema.json",
+  "title": "Parasail Batch",
+  "description": "A batch inference job submitted to Parasail's OpenAI-compatible /v1/batches endpoint.",
+  "type": "object",
+  "required": ["id", "object", "endpoint", "input_file_id", "status"],
+  "properties": {
+    "id": { "type": "string" },
+    "object": { "type": "string", "const": "batch" },
+    "endpoint": {
+      "type": "string",
+      "enum": ["/v1/chat/completions", "/v1/embeddings"]
+    },
+    "input_file_id": { "type": "string" },
+    "output_file_id": { "type": "string" },
+    "error_file_id": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["validating", "in_progress", "finalizing", "completed", "expired", "cancelling", "cancelled", "failed"]
+    },
+    "request_counts": {
+      "type": "object",
+      "properties": {
+        "total": { "type": "integer" },
+        "completed": { "type": "integer" },
+        "failed": { "type": "integer" }
+      }
+    },
+    "created_at": { "type": "integer" },
+    "completed_at": { "type": "integer" },
+    "cancelled_at": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": { "type": "string" } }
+  }
+}

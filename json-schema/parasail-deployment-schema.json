@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/parasail-ai/main/json-schema/parasail-deployment-schema.json",
+  "title": "Parasail Dedicated Deployment",
+  "description": "A reserved-capacity Parasail dedicated deployment record.",
+  "type": "object",
+  "required": ["deployment_id", "deploymentName", "modelName", "status"],
+  "properties": {
+    "deployment_id": { "type": "string" },
+    "deploymentName": { "type": "string" },
+    "modelName": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["provisioning", "running", "paused", "updating", "deleting", "failed"]
+    },
+    "deviceConfigs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["device", "count"],
+        "properties": {
+          "device": { "type": "string" },
+          "count": { "type": "integer" }
+        }
+      }
+    },
+    "replicas": { "type": "integer" },
+    "autoscaling": {
+      "type": "object",
+      "properties": {
+        "min_replicas": { "type": "integer" },
+        "max_replicas": { "type": "integer" }
+      }
+    },
+    "endpoint_url": { "type": "string", "format": "uri" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  }
+}

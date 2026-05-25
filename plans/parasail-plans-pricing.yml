@@ -1,0 +1,128 @@
+aid: parasail
+specVersion: '0.1'
+name: Parasail Plans & Pricing
+url: https://www.saas.parasail.io/pricing
+description: |
+  Parasail offers four commercial surfaces — Serverless, Dedicated Serverless,
+  Dedicated, and Batch — billed on a pay-per-token or GPU-hour basis with no long-term
+  contracts. Tiers (Free, User, Dedicated Serverless, Dedicated Serverless Pro,
+  Enterprise) gate request-per-minute capacity. Free credits are provided for new
+  accounts.
+plans:
+  - id: free
+    name: Free
+    description: Free tier with starter credits for evaluating Parasail's serverless inference.
+    entries:
+      - geo: Global
+        unit: 1
+        label: User
+        limit: 1
+        price: 0
+        metric: user
+        timeFrame: month
+        description: Free starter credits, capped at 5 RPM.
+    elements:
+      - name: Pay-per-token serverless inference (after free credits exhausted)
+      - name: Access to all serverless models exposed on /v1/models
+      - name: OpenAI-compatible /v1/chat/completions, /v1/completions, /v1/embeddings
+      - name: 5 RPM rate limit
+      - name: Free credits for new users
+  - id: user
+    name: User
+    description: Standard pay-per-token serverless tier for individual developers and small teams.
+    entries:
+      - geo: Global
+        unit: 1
+        label: User
+        price: PayPerToken
+        metric: user
+        timeFrame: month
+        description: Pay-per-token usage-based billing, 500 RPM.
+    elements:
+      - name: 500 RPM
+      - name: All serverless models
+      - name: Batch API access (50% off serverless, +30% off cached tokens)
+      - name: No quotas on monthly token volume
+  - id: dedicated-serverless
+    name: Dedicated Serverless
+    description: |
+      Guaranteed throughput against a chosen model on isolated capacity, still billed
+      per token but with reserved GPUs behind the endpoint.
+    entries:
+      - geo: Global
+        unit: 1
+        label: Deployment
+        price: Reserved
+        metric: deployment
+        timeFrame: month
+        description: Reserved isolated pool with per-token billing and 1,000 RPM ceiling.
+    elements:
+      - name: 1,000 RPM
+      - name: Isolated capacity for a chosen model
+      - name: Pay-per-token billing on reserved pool
+      - name: Control-plane API for pause/resume/scale
+  - id: dedicated-serverless-pro
+    name: Dedicated Serverless Pro
+    description: Higher-throughput dedicated serverless tier for production workloads.
+    entries:
+      - geo: Global
+        unit: 1
+        label: Deployment
+        price: Reserved
+        metric: deployment
+        timeFrame: month
+        description: Reserved isolated pool with 4,000 RPM ceiling.
+    elements:
+      - name: 4,000 RPM
+      - name: Production-grade SLOs
+      - name: All Dedicated Serverless features
+  - id: dedicated
+    name: Dedicated
+    description: |
+      Fully reserved GPU deployments billed on GPU-hours. Bring any Hugging Face or
+      custom model and choose the device SKU and replica count.
+    entries:
+      - geo: Global
+        unit: 1
+        label: GPU
+        price: GPUHour
+        metric: gpu-hour
+        timeFrame: hour
+        description: Billed per GPU-hour against a chosen device config and replica count.
+    elements:
+      - name: Bring-your-own model (any Hugging Face / custom)
+      - name: Choose GPU SKU (H100, A100, H200, etc.)
+      - name: Autoscaling between min/max replicas
+      - name: Pause and resume to control cost
+  - id: batch
+    name: Batch
+    description: Asynchronous batch inference for offline workloads at 50% off serverless rates.
+    entries:
+      - geo: Global
+        unit: 1M
+        label: Tokens (Input + Output)
+        price: 50PctOffServerless
+        metric: token
+        timeFrame: usage
+        description: 50% off the corresponding serverless model rate, with cached tokens at an additional 30% off.
+    elements:
+      - name: 24-hour completion window
+      - name: Supports /v1/chat/completions and /v1/embeddings
+      - name: OpenAI-compatible JSONL batch file format
+      - name: 80-90% cheaper than real-time for large offline jobs (combined with caching)
+  - id: enterprise
+    name: Enterprise
+    description: Custom contracts for large-scale tokenmaxxing customers.
+    entries:
+      - geo: Global
+        unit: 1
+        label: Contract
+        price: Call
+        metric: contract
+        timeFrame: year
+        description: Custom pricing, unlimited RPM, dedicated support.
+    elements:
+      - name: Unlimited RPM
+      - name: Custom model onboarding and dedicated capacity
+      - name: Premium support and SLOs
+      - name: Volume discounts

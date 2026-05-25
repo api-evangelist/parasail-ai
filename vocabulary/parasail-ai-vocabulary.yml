@@ -1,0 +1,69 @@
+name: Parasail Vocabulary
+description: |
+  Canonical operational and capability vocabulary for Parasail — the GPU inference
+  supercloud for AI startups. Captures the model surface (serverless, batch, dedicated),
+  the resource taxonomy (chat completions, embeddings, batches, files, deployments,
+  models), and the commercial primitives (pay-per-token, batch discount, dedicated
+  reservations).
+provider: parasail
+domains:
+  - name: Inference
+    description: Real-time and streaming model inference endpoints.
+    terms:
+      - chat completion
+      - completion
+      - embedding
+      - streaming
+      - tool use
+      - structured output
+  - name: Batch
+    description: Asynchronous JSONL-driven batch inference and the file lifecycle that backs it.
+    terms:
+      - batch job
+      - input file
+      - output file
+      - error file
+      - completion window
+      - cached tokens
+  - name: Dedicated
+    description: Reserved-capacity deployments running a chosen model on isolated GPUs.
+    terms:
+      - deployment
+      - device config
+      - replica
+      - autoscaling
+      - pause
+      - resume
+  - name: Models
+    description: Open-weight LLMs, embedding models, vision/multimodal models, and TTS/STT.
+    terms:
+      - DeepSeek
+      - Qwen
+      - Llama
+      - OLMo
+      - Whisper
+      - Orpheus TTS
+      - Resemble TTS
+      - Hugging Face
+  - name: Commercial
+    description: Commercial primitives unique to Parasail's pay-per-token supercloud.
+    terms:
+      - serverless
+      - dedicated serverless
+      - dedicated
+      - pay-per-token
+      - batch discount
+      - free credits
+      - usage tier
+tags:
+  - AI
+  - Artificial Intelligence
+  - GPU
+  - Inference
+  - Large Language Models
+  - Open Source Models
+  - Hugging Face
+  - Batch
+  - Embeddings
+  - RAG
+  - Tokenmaxxing

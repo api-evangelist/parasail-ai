@@ -1,0 +1,31 @@
+name: parasail-batch-files
+description: |
+  Upload, list, retrieve, download, and delete JSONL files used as input and output for
+  Parasail batch inference jobs.
+provider: parasail
+api: parasail-batch-api
+operations:
+  - operationId: uploadFile
+    method: POST
+    path: /files
+  - operationId: listFiles
+    method: GET
+    path: /files
+  - operationId: getFile
+    method: GET
+    path: /files/{file_id}
+  - operationId: getFileContent
+    method: GET
+    path: /files/{file_id}/content
+  - operationId: deleteFile
+    method: DELETE
+    path: /files/{file_id}
+inputs:
+  - name: file
+    required: true
+  - name: purpose
+    required: true
+    description: 'batch'
+outputs:
+  - name: file
+    description: File metadata or raw bytes.

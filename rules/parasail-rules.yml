@@ -1,0 +1,50 @@
+extends: spectral:oas
+rules:
+  parasail-server-base-url:
+    description: All Parasail OpenAPI specs must use one of the canonical Parasail base URLs.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://api\.parasail\.io/(v1|api/v1)(/.*)?$'
+  parasail-bearer-auth:
+    description: Parasail APIs authenticate via HTTP Bearer (API key) — securitySchemes must include a bearer scheme.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          additionalProperties:
+            type: object
+          patternProperties:
+            '.*':
+              properties:
+                type: { const: http }
+                scheme: { const: bearer }
+  parasail-operation-id-camelcase:
+    description: operationId must be lowerCamelCase verbs (e.g. createChatCompletion, listBatches).
+    severity: warn
+    given: $.paths.*.*.operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][A-Za-z0-9]+$'
+  parasail-summary-title-case:
+    description: Operation summaries should use Title Case (e.g. "Create Chat Completion").
+    severity: warn
+    given: $.paths.*.*.summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][A-Za-z0-9]*)( [A-Z][A-Za-z0-9]*)*$'
+  parasail-tags-required:
+    description: Every operation must have at least one tag.
+    severity: error
+    given: $.paths.*.*.tags
+    then:
+      function: length
+      functionOptions:
+        min: 1

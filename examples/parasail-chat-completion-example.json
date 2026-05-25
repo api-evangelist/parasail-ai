@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.parasail.io/v1/chat/completions",
+    "headers": {
+      "Authorization": "Bearer $PARASAIL_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "model": "parasail-deepseek-v3",
+      "messages": [
+        { "role": "system", "content": "You are a concise assistant." },
+        { "role": "user", "content": "Give me three reasons Parasail is well suited for tokenmaxxing workloads." }
+      ],
+      "max_tokens": 256,
+      "temperature": 0.4,
+      "stream": false
+    }
+  },
+  "response": {
+    "id": "chatcmpl-1a2b3c4d",
+    "object": "chat.completion",
+    "created": 1748140800,
+    "model": "parasail-deepseek-v3",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "1) Pay-per-token serverless pricing with no quotas or contracts.\n2) Global GPU orchestration across 40+ data centers.\n3) Day-0 support for frontier open-weight LLMs."
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": { "prompt_tokens": 38, "completion_tokens": 64, "total_tokens": 102 }
+  }
+}

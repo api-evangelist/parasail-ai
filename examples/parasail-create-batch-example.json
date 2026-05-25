@@ -1,0 +1,26 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.parasail.io/v1/batches",
+    "headers": {
+      "Authorization": "Bearer $PARASAIL_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "input_file_id": "file_abc123",
+      "endpoint": "/v1/chat/completions",
+      "completion_window": "24h",
+      "metadata": { "job_name": "nightly-rerank" }
+    }
+  },
+  "response": {
+    "id": "batch_01HNXYZ",
+    "object": "batch",
+    "endpoint": "/v1/chat/completions",
+    "input_file_id": "file_abc123",
+    "status": "validating",
+    "request_counts": { "total": 0, "completed": 0, "failed": 0 },
+    "created_at": 1748140800,
+    "metadata": { "job_name": "nightly-rerank" }
+  }
+}

@@ -1,0 +1,13 @@
+name: parasail-inference-models
+description: |
+  Discover the set of serverless models currently exposed on Parasail and their canonical
+  IDs. Backed by the OpenAI-compatible /v1/models endpoint.
+provider: parasail
+api: parasail-inference-api
+operations:
+  - operationId: listModels
+    method: GET
+    path: /models
+outputs:
+  - name: models
+    description: List of model IDs available on the serverless tier.

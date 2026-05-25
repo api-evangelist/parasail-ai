@@ -1,0 +1,37 @@
+name: parasail-dedicated-deployments
+description: |
+  Manage Parasail Dedicated and Dedicated Serverless deployments — reserved-capacity GPU
+  deployments running a chosen Hugging Face or custom model. Create, list, retrieve,
+  update, pause, resume, and delete deployments via the control-plane API.
+provider: parasail
+api: parasail-dedicated-api
+operations:
+  - operationId: listDeployments
+    method: GET
+    path: /dedicated/deployments
+  - operationId: createDeployment
+    method: POST
+    path: /dedicated/deployments
+  - operationId: getDeployment
+    method: GET
+    path: /dedicated/deployments/{deployment_id}
+  - operationId: updateDeployment
+    method: PUT
+    path: /dedicated/deployments/{deployment_id}
+  - operationId: pauseDeployment
+    method: POST
+    path: /dedicated/deployments/{deployment_id}/pause
+  - operationId: resumeDeployment
+    method: POST
+    path: /dedicated/deployments/{deployment_id}/resume
+  - operationId: deleteDeployment
+    method: DELETE
+    path: /dedicated/deployments/{deployment_id}
+inputs:
+  - name: deploymentName
+  - name: modelName
+  - name: deviceConfigs
+  - name: replicas
+outputs:
+  - name: deployment
+    description: Deployment record including endpoint_url, status, and replica configuration.

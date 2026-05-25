@@ -1,0 +1,48 @@
+aid: parasail
+specVersion: '0.1'
+name: Parasail Rate Limits
+url: https://docs.parasail.io/parasail-docs/
+description: |
+  Parasail enforces request-per-minute (RPM) ceilings by usage tier on its OpenAI-
+  compatible inference endpoints. A token-volume limit is not currently enforced.
+  Batch jobs are bounded by a 24-hour completion window rather than RPM. Dedicated
+  deployments have no global RPM ceiling beyond what the provisioned replicas can
+  serve.
+tiers:
+  - id: free
+    name: Free
+    rpm: 5
+    description: Starter tier capped at 5 requests per minute across all inference endpoints.
+  - id: user
+    name: User
+    rpm: 500
+    description: Standard developer tier capped at 500 requests per minute.
+  - id: dedicated-serverless
+    name: Dedicated Serverless
+    rpm: 1000
+    description: Reserved-pool tier capped at 1,000 requests per minute.
+  - id: dedicated-serverless-pro
+    name: Dedicated Serverless Pro
+    rpm: 4000
+    description: High-throughput reserved-pool tier capped at 4,000 requests per minute.
+  - id: enterprise
+    name: Enterprise
+    rpm: Unlimited
+    description: Custom contracts; no platform-imposed RPM ceiling.
+policies:
+  - scope: inference
+    endpoints:
+      - https://api.parasail.io/v1/chat/completions
+      - https://api.parasail.io/v1/completions
+      - https://api.parasail.io/v1/embeddings
+      - https://api.parasail.io/v1/models
+    enforcement: RPM (per API key, per tier)
+    tokenLimit: Not currently enforced
+  - scope: batch
+    endpoints:
+      - https://api.parasail.io/v1/batches
+    enforcement: 24-hour completion window per job
+  - scope: dedicated
+    endpoints:
+      - https://api.parasail.io/api/v1/dedicated/deployments
+    enforcement: Throughput bounded by provisioned replicas, not by global RPM

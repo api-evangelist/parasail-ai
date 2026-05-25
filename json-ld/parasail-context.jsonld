@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "parasail": "https://parasail.io/ns#",
+    "Provider": "Organization",
+    "Inference": "parasail:Inference",
+    "ChatCompletion": "parasail:ChatCompletion",
+    "Embedding": "parasail:Embedding",
+    "Batch": "parasail:Batch",
+    "Deployment": "parasail:Deployment",
+    "Model": "parasail:Model",
+    "model": { "@id": "parasail:model", "@type": "Text" },
+    "messages": { "@id": "parasail:messages", "@container": "@list" },
+    "input_file_id": { "@id": "parasail:input_file_id", "@type": "Text" },
+    "output_file_id": { "@id": "parasail:output_file_id", "@type": "Text" },
+    "endpoint": { "@id": "parasail:endpoint", "@type": "URL" },
+    "deployment_id": { "@id": "parasail:deployment_id", "@type": "Text" },
+    "deploymentName": { "@id": "parasail:deploymentName", "@type": "Text" },
+    "modelName": { "@id": "parasail:modelName", "@type": "Text" },
+    "deviceConfigs": { "@id": "parasail:deviceConfigs" },
+    "replicas": { "@id": "parasail:replicas", "@type": "Integer" },
+    "usage": { "@id": "parasail:usage" },
+    "status": { "@id": "parasail:status", "@type": "Text" }
+  }
+}

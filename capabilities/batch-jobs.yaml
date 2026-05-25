@@ -1,0 +1,29 @@
+name: parasail-batch-jobs
+description: |
+  Manage asynchronous batch inference jobs that process JSONL request files at 50% off
+  serverless pricing (with cached tokens at an additional 30% off). Supports
+  /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format.
+provider: parasail
+api: parasail-batch-api
+operations:
+  - operationId: createBatch
+    method: POST
+    path: /batches
+  - operationId: listBatches
+    method: GET
+    path: /batches
+  - operationId: getBatch
+    method: GET
+    path: /batches/{batch_id}
+  - operationId: cancelBatch
+    method: POST
+    path: /batches/{batch_id}/cancel
+inputs:
+  - name: input_file_id
+    required: true
+  - name: endpoint
+    required: true
+    description: '/v1/chat/completions or /v1/embeddings'
+outputs:
+  - name: batch
+    description: Batch job status, output_file_id, and request counts.
