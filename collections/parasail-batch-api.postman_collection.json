@@ -1,0 +1,921 @@
+{
+  "item": [
+    {
+      "id": "b7a77db6-2f01-452d-8627-95efcf55b2cd",
+      "name": "Batch",
+      "description": {
+        "content": "Create, list, retrieve, and cancel batch inference jobs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e83e518-ea29-42e6-b0f5-f62d3bb7b862",
+          "name": "Create Batch",
+          "request": {
+            "name": "Create Batch",
+            "description": {
+              "content": "Submit a new batch inference job that processes a previously-uploaded JSONL file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input_file_id\": \"<string>\",\n  \"endpoint\": \"<string>\",\n  \"completion_window\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e62d85d-e9a1-43f3-85d9-0c7d68469cf5",
+              "name": "The created batch job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input_file_id\": \"<string>\",\n  \"endpoint\": \"<string>\",\n  \"completion_window\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"batch\",\n  \"endpoint\": \"string\",\n  \"input_file_id\": \"string\",\n  \"output_file_id\": \"string\",\n  \"error_file_id\": \"string\",\n  \"status\": \"cancelled\",\n  \"request_counts\": {\n    \"total\": 7898,\n    \"completed\": 9421,\n    \"failed\": 9617\n  },\n  \"created_at\": 2514,\n  \"completed_at\": 9508,\n  \"cancelled_at\": 1340,\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88732c32-7d8c-4e49-ad4f-c765f682e7fd",
+          "name": "List Batches",
+          "request": {
+            "name": "List Batches",
+            "description": {
+              "content": "List your batch inference jobs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ed2043f-0992-4104-b925-bf73f4bc3a85",
+              "name": "A list of batch jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"object\": \"batch\",\n      \"endpoint\": \"string\",\n      \"input_file_id\": \"string\",\n      \"output_file_id\": \"string\",\n      \"error_file_id\": \"string\",\n      \"status\": \"cancelled\",\n      \"request_counts\": {\n        \"total\": 3525,\n        \"completed\": 3543,\n        \"failed\": 7565\n      },\n      \"created_at\": 1100,\n      \"completed_at\": 2608,\n      \"cancelled_at\": 8341,\n      \"metadata\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"object\": \"batch\",\n      \"endpoint\": \"string\",\n      \"input_file_id\": \"string\",\n      \"output_file_id\": \"string\",\n      \"error_file_id\": \"string\",\n      \"status\": \"failed\",\n      \"request_counts\": {\n        \"total\": 8053,\n        \"completed\": 6479,\n        \"failed\": 7003\n      },\n      \"created_at\": 5725,\n      \"completed_at\": 3499,\n      \"cancelled_at\": 7878,\n      \"metadata\": {}\n    }\n  ],\n  \"has_more\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "531b6920-18f4-4f21-a1df-d5e318c34a39",
+          "name": "Retrieve Batch",
+          "request": {
+            "name": "Retrieve Batch",
+            "description": {
+              "content": "Retrieve the status and output file references for a batch job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batches",
+                ":batch_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batch_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57ff82ea-6195-4ac3-aefa-931a073416ab",
+              "name": "The batch job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batches",
+                    ":batch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batch_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"batch\",\n  \"endpoint\": \"string\",\n  \"input_file_id\": \"string\",\n  \"output_file_id\": \"string\",\n  \"error_file_id\": \"string\",\n  \"status\": \"cancelled\",\n  \"request_counts\": {\n    \"total\": 7898,\n    \"completed\": 9421,\n    \"failed\": 9617\n  },\n  \"created_at\": 2514,\n  \"completed_at\": 9508,\n  \"cancelled_at\": 1340,\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d957e60-a0b4-4b47-b366-204ff6ed70f2",
+          "name": "Cancel Batch",
+          "request": {
+            "name": "Cancel Batch",
+            "description": {
+              "content": "Cancel an in-flight batch job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batches",
+                ":batch_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batch_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99126ee1-90ca-4666-b682-6834298bac58",
+              "name": "The cancelled batch job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batches",
+                    ":batch_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batch_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"batch\",\n  \"endpoint\": \"string\",\n  \"input_file_id\": \"string\",\n  \"output_file_id\": \"string\",\n  \"error_file_id\": \"string\",\n  \"status\": \"cancelled\",\n  \"request_counts\": {\n    \"total\": 7898,\n    \"completed\": 9421,\n    \"failed\": 9617\n  },\n  \"created_at\": 2514,\n  \"completed_at\": 9508,\n  \"cancelled_at\": 1340,\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3cfe17a2-c4bc-4040-ac85-147c11dacd1b",
+      "name": "Files",
+      "description": {
+        "content": "Upload and manage input/output JSONL files used by Batch jobs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "686bc348-b93d-456e-847c-f3a88b170a81",
+          "name": "Upload File",
+          "request": {
+            "name": "Upload File",
+            "description": {
+              "content": "Upload a JSONL file to use as input or to download as output from a batch job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "purpose",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required)  (This can only be one of batch)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "34e12c73-22e1-4aec-9b7a-cf17e5e4081a",
+              "name": "The uploaded file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of batch)",
+                        "type": "text/plain"
+                      },
+                      "key": "purpose",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"file\",\n  \"bytes\": 794,\n  \"created_at\": 5471,\n  \"filename\": \"string\",\n  \"purpose\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b1b901b-7bc3-42b2-bf55-929b844996cc",
+          "name": "List Files",
+          "request": {
+            "name": "List Files",
+            "description": {
+              "content": "List files uploaded to the Batch API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "347e2462-73f9-4436-ba97-5389fad12560",
+              "name": "A list of files.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"object\": \"file\",\n      \"bytes\": 2050,\n      \"created_at\": 5644,\n      \"filename\": \"string\",\n      \"purpose\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"object\": \"file\",\n      \"bytes\": 5375,\n      \"created_at\": 5738,\n      \"filename\": \"string\",\n      \"purpose\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7914c68c-e6bc-499c-b324-441d4dfbcba4",
+          "name": "Retrieve File",
+          "request": {
+            "name": "Retrieve File",
+            "description": {
+              "content": "Retrieve metadata for an uploaded file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":file_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "file_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e55c1ce-7638-423c-a0c8-6663e863321a",
+              "name": "The file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":file_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"file\",\n  \"bytes\": 794,\n  \"created_at\": 5471,\n  \"filename\": \"string\",\n  \"purpose\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "374cd73a-7f64-419a-b5e1-06ac4d49af85",
+          "name": "Delete File",
+          "request": {
+            "name": "Delete File",
+            "description": {
+              "content": "Delete an uploaded file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":file_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "file_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f734890e-cb0a-4061-8480-602555eefd50",
+              "name": "The deletion result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":file_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34e6c3bb-1d04-41f0-8b5d-40b6bdd35464",
+          "name": "Download File Content",
+          "request": {
+            "name": "Download File Content",
+            "description": {
+              "content": "Download the raw bytes for a previously-uploaded file (including batch output files).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":file_id",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "file_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffce7226-6a45-43c6-8aa9-142179a62ec9",
+              "name": "The file contents.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":file_id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.parasail.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "df94e3de-857d-4c29-bbda-5e2e735fb9d4",
+    "name": "Parasail Batch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off\nserverless pricing (with cached tokens at an additional 30% off). Supports\n/v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).\n\n\nContact Support:\n Name: Parasail",
+      "type": "text/plain"
+    }
+  }
+}

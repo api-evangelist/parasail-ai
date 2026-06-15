@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Parasail Dedicated Deployments API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deployments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.parasail.io/api/v1/dedicated/deployments"
+          },
+          "docs": "List all dedicated deployments owned by the authenticated organization."
+        },
+        {
+          "info": {
+            "name": "Create Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.parasail.io/api/v1/dedicated/deployments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provision a new dedicated deployment of a chosen model on a chosen GPU device configuration."
+        },
+        {
+          "info": {
+            "name": "Retrieve Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.parasail.io/api/v1/dedicated/deployments/:deployment_id",
+            "params": [
+              {
+                "name": "deployment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a dedicated deployment by ID."
+        },
+        {
+          "info": {
+            "name": "Update Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.parasail.io/api/v1/dedicated/deployments/:deployment_id",
+            "params": [
+              {
+                "name": "deployment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update mutable properties of a dedicated deployment (e.g. replicas, autoscaling)."
+        },
+        {
+          "info": {
+            "name": "Delete Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.parasail.io/api/v1/dedicated/deployments/:deployment_id",
+            "params": [
+              {
+                "name": "deployment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Permanently delete a dedicated deployment and release its reserved GPU capacity."
+        },
+        {
+          "info": {
+            "name": "Pause Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.parasail.io/api/v1/dedicated/deployments/:deployment_id/pause",
+            "params": [
+              {
+                "name": "deployment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Pause a dedicated deployment to stop billing while preserving configuration."
+        },
+        {
+          "info": {
+            "name": "Resume Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.parasail.io/api/v1/dedicated/deployments/:deployment_id/resume",
+            "params": [
+              {
+                "name": "deployment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resume a previously-paused dedicated deployment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "9f4240dc-9039-451a-821a-c9d9d0761afb",
+      "name": "Chat",
+      "description": {
+        "content": "Chat completions for conversational LLM workloads.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8913789-71b8-44ab-9464-21fba393ad43",
+          "name": "Create Chat Completion",
+          "request": {
+            "name": "Create Chat Completion",
+            "description": {
+              "content": "Generate a chat completion from a list of messages using an OpenAI-compatible request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chat",
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"stream\": \"<boolean>\",\n  \"stop\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_format\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e392e94-e3e8-44c4-8f16-c26d0996e84a",
+              "name": "A chat completion response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_call_id\": \"string\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"string\",\n      \"name\": \"string\",\n      \"tool_call_id\": \"string\"\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"stream\": \"<boolean>\",\n  \"stop\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_format\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"chat.completion\",\n  \"created\": 7109,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"index\": 9162,\n      \"message\": {\n        \"role\": \"tool\",\n        \"content\": \"string\",\n        \"name\": \"string\",\n        \"tool_call_id\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"index\": 8932,\n      \"message\": {\n        \"role\": \"tool\",\n        \"content\": \"string\",\n        \"name\": \"string\",\n        \"tool_call_id\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 1316,\n    \"completion_tokens\": 261,\n    \"total_tokens\": 1821\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ab1a5cd7-c714-4822-ba4c-24337f57a775",
+      "name": "Completions",
+      "description": {
+        "content": "Legacy text completions for prompt-only LLM workloads.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "86eb1f97-f227-42c1-9b09-651b443e17a0",
+          "name": "Create Completion",
+          "request": {
+            "name": "Create Completion",
+            "description": {
+              "content": "Generate a text completion from a prompt using an OpenAI-compatible request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "430e8e4a-3857-4506-9f9e-4d08f8c4d729",
+              "name": "A text completion response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"text_completion\",\n  \"created\": 6815,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"text\": \"string\",\n      \"index\": 8088,\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"text\": \"string\",\n      \"index\": 7873,\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 6801,\n    \"completion_tokens\": 3627,\n    \"total_tokens\": 6878\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "69115d0f-8b47-4057-9215-da6d0c2a7f30",
+      "name": "Embeddings",
+      "description": {
+        "content": "Vector embeddings for RAG, semantic search, and similarity workloads.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47aed87a-848e-42c1-80bd-cafbe7984bf5",
+          "name": "Create Embedding",
+          "request": {
+            "name": "Create Embedding",
+            "description": {
+              "content": "Generate vector embeddings for one or more input strings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "embeddings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de63ae95-d217-4440-92a2-a249e713aeee",
+              "name": "An embeddings response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embeddings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"object\": \"embedding\",\n      \"embedding\": [\n        4244.030431782593,\n        8834.645042660837\n      ],\n      \"index\": 5289\n    },\n    {\n      \"object\": \"embedding\",\n      \"embedding\": [\n        6123.765118685485,\n        8786.523864913062\n      ],\n      \"index\": 4541\n    }\n  ],\n  \"model\": \"string\",\n  \"usage\": {\n    \"prompt_tokens\": 5000,\n    \"completion_tokens\": 6478,\n    \"total_tokens\": 3942\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e3513054-1dd0-424f-bf87-62b0769a6664",
+      "name": "Models",
+      "description": {
+        "content": "Discover the models currently exposed on the serverless tier.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "96bea6f5-e3b8-45b1-9837-7b185067924f",
+          "name": "List Models",
+          "request": {
+            "name": "List Models",
+            "description": {
+              "content": "List the serverless models currently available on Parasail.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d72350c6-6a46-45ac-b91c-c17f43f94641",
+              "name": "A list of available models.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"object\": \"model\",\n      \"created\": 2651,\n      \"owned_by\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"object\": \"model\",\n      \"created\": 4433,\n      \"owned_by\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.parasail.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8cf87516-bf42-4a8b-b6e3-05b63181df39",
+    "name": "Parasail Inference API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAI-compatible inference API for Parasail's AI Supercloud. Provides serverless\npay-per-token access to popular open-weight LLMs, embedding models, image generation\nmodels, and text-to-speech models running on Parasail's global GPU network.\n\n\nContact Support:\n Name: Parasail",
+      "type": "text/plain"
+    }
+  }
+}

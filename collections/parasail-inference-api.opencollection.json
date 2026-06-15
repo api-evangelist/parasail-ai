@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Parasail Inference API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Chat Completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.parasail.io/v1/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a chat completion from a list of messages using an OpenAI-compatible request body."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Completions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.parasail.io/v1/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a text completion from a prompt using an OpenAI-compatible request body."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Embeddings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Embedding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.parasail.io/v1/embeddings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate vector embeddings for one or more input strings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.parasail.io/v1/models"
+          },
+          "docs": "List the serverless models currently available on Parasail."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
