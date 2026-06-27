@@ -108,7 +108,7 @@ common:
     url: https://parasail.io
   - type: Documentation
     url: https://docs.parasail.io/parasail-docs/
-  - type: SignUp
+  - type: Signup
     url: https://www.saas.parasail.io/
   - type: Pricing
     url: https://www.saas.parasail.io/pricing
@@ -124,7 +124,7 @@ common:
     url: https://parasail.io/legal/terms-of-service
   - type: GitHubOrganization
     url: https://github.com/parasail-ai
-  - type: Forum
+  - type: Forums
     url: https://discord.gg/parasail
   - type: LinkedIn
     url: https://www.linkedin.com/company/parasail-ai
@@ -132,25 +132,25 @@ common:
     url: https://x.com/parasail_io
   - url: https://github.com/parasail-ai/openai-batch
     name: openai-batch
-    type: SDK
+    type: SDKs
   - url: https://github.com/parasail-ai/cookbook
     name: Parasail Cookbook
     type: CodeExamples
   - url: https://github.com/parasail-ai/kvcached
     name: kvcached
-    type: Tool
+    type: Tools
   - url: https://github.com/parasail-ai/vllm-public
     name: vllm-public
-    type: Tool
+    type: Tools
   - url: https://github.com/parasail-ai/curator
     name: curator
-    type: Tool
+    type: Tools
   - url: https://github.com/parasail-ai/simple-evals
     name: simple-evals
-    type: Tool
+    type: Tools
   - url: https://github.com/parasail-ai/VLMEvalKit
     name: VLMEvalKit
-    type: Tool
+    type: Tools
   - url: plans/parasail-plans-pricing.yml
     type: Plans
   - url: rate-limits/parasail-rate-limits.yml
