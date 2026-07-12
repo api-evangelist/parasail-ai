@@ -104,6 +104,10 @@ apis:
       and delete deployments. Read-only API keys can list and retrieve but cannot
       mutate. Endpoint: /api/v1/dedicated/deployments.
 common:
+  - type: DomainSecurity
+    url: security/parasail-ai-domain-security.yml
+  - type: Authentication
+    url: authentication/parasail-ai-authentication.yml
   - type: Portal
     url: https://parasail.io
   - type: Documentation
