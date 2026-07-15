@@ -104,6 +104,8 @@ apis:
       and delete deployments. Read-only API keys can list and retrieve but cannot
       mutate. Endpoint: /api/v1/dedicated/deployments.
 common:
+  - type: AgenticAccess
+    url: agentic-access/parasail-ai-agentic-access.yml
   - type: DomainSecurity
     url: security/parasail-ai-domain-security.yml
   - type: Authentication
