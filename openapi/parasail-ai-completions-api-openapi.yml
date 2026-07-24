@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Parasail Batch Completions API
+  description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
+
+    serverless pricing (with cached tokens at an additional 30% off). Supports
+
+    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
+
+    '
+  version: '1.0'
+  contact:
+    name: Parasail
+    url: https://docs.parasail.io/parasail-docs/
+servers:
+- url: https://api.parasail.io/v1
+  description: Parasail Batch endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Completions
+  description: Legacy text completions for prompt-only LLM workloads.
+paths:
+  /completions:
+    post:
+      tags:
+      - Completions
+      operationId: createCompletion
+      summary: Create Completion
+      description: Generate a text completion from a prompt using an OpenAI-compatible request body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionRequest'
+      responses:
+        '200':
+          description: A text completion response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionResponse'
+components:
+  schemas:
+    CompletionRequest:
+      type: object
+      required:
+      - model
+      - prompt
+      properties:
+        model:
+          type: string
+        prompt:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        max_tokens:
+          type: integer
+        temperature:
+          type: number
+        top_p:
+          type: number
+        stream:
+          type: boolean
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+    CompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: text_completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              text:
+                type: string
+              index:
+                type: integer
+              finish_reason:
+                type: string
+        usage:
+          $ref: '#/components/schemas/Usage'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Send your Parasail API key as a Bearer token.

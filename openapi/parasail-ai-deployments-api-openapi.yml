@@ -1,26 +1,30 @@
 openapi: 3.1.0
 info:
-  title: Parasail Dedicated Deployments API
-  description: |
-    Control-plane API for managing Parasail Dedicated and Dedicated Serverless deployments.
-    Create, list, retrieve, update, pause, resume, and delete reserved GPU deployments
-    that run a chosen Hugging Face or custom model on isolated capacity.
+  title: Parasail Batch Deployments API
+  description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
+
+    serverless pricing (with cached tokens at an additional 30% off). Supports
+
+    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
+
+    '
   version: '1.0'
   contact:
     name: Parasail
     url: https://docs.parasail.io/parasail-docs/
 servers:
-  - url: https://api.parasail.io/api/v1
-    description: Parasail Dedicated control plane
+- url: https://api.parasail.io/v1
+  description: Parasail Batch endpoint
 security:
-  - bearerAuth: []
+- bearerAuth: []
 tags:
-  - name: Deployments
-    description: Manage dedicated GPU deployments for custom and reserved-capacity inference.
+- name: Deployments
+  description: Manage dedicated GPU deployments for custom and reserved-capacity inference.
 paths:
   /dedicated/deployments:
     get:
-      tags: [Deployments]
+      tags:
+      - Deployments
       operationId: listDeployments
       summary: List Deployments
       description: List all dedicated deployments owned by the authenticated organization.
@@ -34,7 +38,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Deployment'
     post:
-      tags: [Deployments]
+      tags:
+      - Deployments
       operationId: createDeployment
       summary: Create Deployment
       description: Provision a new dedicated deployment of a chosen model on a chosen GPU device configuration.
@@ -53,16 +58,17 @@ paths:
                 $ref: '#/components/schemas/Deployment'
   /dedicated/deployments/{deployment_id}:
     get:
-      tags: [Deployments]
+      tags:
+      - Deployments
       operationId: getDeployment
       summary: Retrieve Deployment
       description: Retrieve a dedicated deployment by ID.
       parameters:
-        - in: path
-          name: deployment_id
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: deployment_id
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: The deployment.
@@ -71,16 +77,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/Deployment'
     put:
-      tags: [Deployments]
+      tags:
+      - Deployments
       operationId: updateDeployment
       summary: Update Deployment
       description: Update mutable properties of a dedicated deployment (e.g. replicas, autoscaling).
       parameters:
-        - in: path
-          name: deployment_id
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: deployment_id
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -95,31 +102,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/Deployment'
     delete:
-      tags: [Deployments]
+      tags:
+      - Deployments
       operationId: deleteDeployment
       summary: Delete Deployment
       description: Permanently delete a dedicated deployment and release its reserved GPU capacity.
       parameters:
-        - in: path
-          name: deployment_id
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: deployment_id
+        required: true
+        schema:
+          type: string
       responses:
         '204':
           description: Deployment deleted.
   /dedicated/deployments/{deployment_id}/pause:
     post:
-      tags: [Deployments]
+      tags:
+      - Deployments
       operationId: pauseDeployment
       summary: Pause Deployment
       description: Pause a dedicated deployment to stop billing while preserving configuration.
       parameters:
-        - in: path
-          name: deployment_id
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: deployment_id
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: The paused deployment.
@@ -129,16 +138,17 @@ paths:
                 $ref: '#/components/schemas/Deployment'
   /dedicated/deployments/{deployment_id}/resume:
     post:
-      tags: [Deployments]
+      tags:
+      - Deployments
       operationId: resumeDeployment
       summary: Resume Deployment
       description: Resume a previously-paused dedicated deployment.
       parameters:
-        - in: path
-          name: deployment_id
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: deployment_id
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: The resumed deployment.
@@ -147,15 +157,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/Deployment'
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: Send your Parasail API key as a Bearer token. Read-only keys can list and retrieve but cannot mutate.
   schemas:
+    DeploymentUpdateRequest:
+      type: object
+      properties:
+        replicas:
+          type: integer
+        autoscaling:
+          type: object
+          properties:
+            min_replicas:
+              type: integer
+            max_replicas:
+              type: integer
     DeploymentCreateRequest:
       type: object
-      required: [deploymentName, modelName, deviceConfigs, replicas]
+      required:
+      - deploymentName
+      - modelName
+      - deviceConfigs
+      - replicas
       properties:
         deploymentName:
           type: string
@@ -184,18 +205,6 @@ components:
               type: integer
             max_replicas:
               type: integer
-    DeploymentUpdateRequest:
-      type: object
-      properties:
-        replicas:
-          type: integer
-        autoscaling:
-          type: object
-          properties:
-            min_replicas:
-              type: integer
-            max_replicas:
-              type: integer
     Deployment:
       type: object
       properties:
@@ -207,7 +216,13 @@ components:
           type: string
         status:
           type: string
-          enum: [provisioning, running, paused, updating, deleting, failed]
+          enum:
+          - provisioning
+          - running
+          - paused
+          - updating
+          - deleting
+          - failed
         deviceConfigs:
           type: array
           items:
@@ -228,3 +243,8 @@ components:
         updated_at:
           type: string
           format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Send your Parasail API key as a Bearer token.

@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  title: Parasail Batch Chat API
+  description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
+
+    serverless pricing (with cached tokens at an additional 30% off). Supports
+
+    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
+
+    '
+  version: '1.0'
+  contact:
+    name: Parasail
+    url: https://docs.parasail.io/parasail-docs/
+servers:
+- url: https://api.parasail.io/v1
+  description: Parasail Batch endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Chat
+  description: Chat completions for conversational LLM workloads.
+paths:
+  /chat/completions:
+    post:
+      tags:
+      - Chat
+      operationId: createChatCompletion
+      summary: Create Chat Completion
+      description: Generate a chat completion from a list of messages using an OpenAI-compatible request body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: A chat completion response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+            text/event-stream:
+              schema:
+                type: string
+                description: Server-Sent Events stream when stream=true.
+components:
+  schemas:
+    ChatCompletionRequest:
+      type: object
+      required:
+      - model
+      - messages
+      properties:
+        model:
+          type: string
+          description: ID of the model to use (e.g. parasail-deepseek-v3, parasail-qwen3-coder-480b).
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        max_tokens:
+          type: integer
+        temperature:
+          type: number
+        top_p:
+          type: number
+        stream:
+          type: boolean
+          description: If true, response is returned as a Server-Sent Events stream.
+        stop:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        tools:
+          type: array
+          items:
+            type: object
+        response_format:
+          type: object
+          description: JSON schema or json_object response format constraint.
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                $ref: '#/components/schemas/ChatMessage'
+              finish_reason:
+                type: string
+        usage:
+          $ref: '#/components/schemas/Usage'
+    ChatMessage:
+      type: object
+      required:
+      - role
+      - content
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+          - tool
+        content:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: object
+        name:
+          type: string
+        tool_call_id:
+          type: string
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Send your Parasail API key as a Bearer token.

@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: Parasail Batch Embeddings API
+  description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
+
+    serverless pricing (with cached tokens at an additional 30% off). Supports
+
+    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
+
+    '
+  version: '1.0'
+  contact:
+    name: Parasail
+    url: https://docs.parasail.io/parasail-docs/
+servers:
+- url: https://api.parasail.io/v1
+  description: Parasail Batch endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Embeddings
+  description: Vector embeddings for RAG, semantic search, and similarity workloads.
+paths:
+  /embeddings:
+    post:
+      tags:
+      - Embeddings
+      operationId: createEmbedding
+      summary: Create Embedding
+      description: Generate vector embeddings for one or more input strings.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddingRequest'
+      responses:
+        '200':
+          description: An embeddings response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingResponse'
+components:
+  schemas:
+    EmbeddingRequest:
+      type: object
+      required:
+      - model
+      - input
+      properties:
+        model:
+          type: string
+          description: Embedding model ID.
+        input:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        encoding_format:
+          type: string
+          enum:
+          - float
+          - base64
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+    EmbeddingResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              object:
+                type: string
+                example: embedding
+              embedding:
+                type: array
+                items:
+                  type: number
+              index:
+                type: integer
+        model:
+          type: string
+        usage:
+          $ref: '#/components/schemas/Usage'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Send your Parasail API key as a Bearer token.

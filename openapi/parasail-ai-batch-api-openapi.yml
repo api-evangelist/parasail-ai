@@ -1,0 +1,191 @@
+openapi: 3.1.0
+info:
+  title: Parasail Batch API
+  description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
+
+    serverless pricing (with cached tokens at an additional 30% off). Supports
+
+    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
+
+    '
+  version: '1.0'
+  contact:
+    name: Parasail
+    url: https://docs.parasail.io/parasail-docs/
+servers:
+- url: https://api.parasail.io/v1
+  description: Parasail Batch endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Batch
+  description: Create, list, retrieve, and cancel batch inference jobs.
+paths:
+  /batches:
+    post:
+      tags:
+      - Batch
+      operationId: createBatch
+      summary: Create Batch
+      description: Submit a new batch inference job that processes a previously-uploaded JSONL file.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchCreateRequest'
+      responses:
+        '200':
+          description: The created batch job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Batch'
+    get:
+      tags:
+      - Batch
+      operationId: listBatches
+      summary: List Batches
+      description: List your batch inference jobs.
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          type: integer
+      - in: query
+        name: after
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of batch jobs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchList'
+  /batches/{batch_id}:
+    get:
+      tags:
+      - Batch
+      operationId: getBatch
+      summary: Retrieve Batch
+      description: Retrieve the status and output file references for a batch job.
+      parameters:
+      - in: path
+        name: batch_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The batch job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Batch'
+  /batches/{batch_id}/cancel:
+    post:
+      tags:
+      - Batch
+      operationId: cancelBatch
+      summary: Cancel Batch
+      description: Cancel an in-flight batch job.
+      parameters:
+      - in: path
+        name: batch_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The cancelled batch job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Batch'
+components:
+  schemas:
+    BatchCreateRequest:
+      type: object
+      required:
+      - input_file_id
+      - endpoint
+      - completion_window
+      properties:
+        input_file_id:
+          type: string
+          description: ID of an uploaded JSONL file containing the batch requests.
+        endpoint:
+          type: string
+          enum:
+          - /v1/chat/completions
+          - /v1/embeddings
+        completion_window:
+          type: string
+          enum:
+          - 24h
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    Batch:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: batch
+        endpoint:
+          type: string
+        input_file_id:
+          type: string
+        output_file_id:
+          type: string
+        error_file_id:
+          type: string
+        status:
+          type: string
+          enum:
+          - validating
+          - in_progress
+          - finalizing
+          - completed
+          - expired
+          - cancelling
+          - cancelled
+          - failed
+        request_counts:
+          type: object
+          properties:
+            total:
+              type: integer
+            completed:
+              type: integer
+            failed:
+              type: integer
+        created_at:
+          type: integer
+        completed_at:
+          type: integer
+        cancelled_at:
+          type: integer
+        metadata:
+          type: object
+    BatchList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Batch'
+        has_more:
+          type: boolean
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Send your Parasail API key as a Bearer token.
