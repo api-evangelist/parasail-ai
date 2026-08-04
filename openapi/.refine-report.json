@@ -1,0 +1,26 @@
+{
+  "provider": "parasail-ai",
+  "sources": [
+    "parasail-ai-batch-api-openapi.yml",
+    "parasail-ai-chat-api-openapi.yml",
+    "parasail-ai-completions-api-openapi.yml",
+    "parasail-ai-deployments-api-openapi.yml",
+    "parasail-ai-embeddings-api-openapi.yml",
+    "parasail-ai-files-api-openapi.yml",
+    "parasail-ai-models-api-openapi.yml"
+  ],
+  "outputs": [
+    "parasail-ai-batch-api-openapi.yml",
+    "parasail-ai-chat-api-openapi.yml",
+    "parasail-ai-completions-api-openapi.yml",
+    "parasail-ai-deployments-api-openapi.yml",
+    "parasail-ai-embeddings-api-openapi.yml",
+    "parasail-ai-files-api-openapi.yml",
+    "parasail-ai-models-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

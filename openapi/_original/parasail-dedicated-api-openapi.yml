@@ -1,0 +1,230 @@
+openapi: 3.1.0
+info:
+  title: Parasail Dedicated Deployments API
+  description: |
+    Control-plane API for managing Parasail Dedicated and Dedicated Serverless deployments.
+    Create, list, retrieve, update, pause, resume, and delete reserved GPU deployments
+    that run a chosen Hugging Face or custom model on isolated capacity.
+  version: '1.0'
+  contact:
+    name: Parasail
+    url: https://docs.parasail.io/parasail-docs/
+servers:
+  - url: https://api.parasail.io/api/v1
+    description: Parasail Dedicated control plane
+security:
+  - bearerAuth: []
+tags:
+  - name: Deployments
+    description: Manage dedicated GPU deployments for custom and reserved-capacity inference.
+paths:
+  /dedicated/deployments:
+    get:
+      tags: [Deployments]
+      operationId: listDeployments
+      summary: List Deployments
+      description: List all dedicated deployments owned by the authenticated organization.
+      responses:
+        '200':
+          description: A list of dedicated deployments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Deployment'
+    post:
+      tags: [Deployments]
+      operationId: createDeployment
+      summary: Create Deployment
+      description: Provision a new dedicated deployment of a chosen model on a chosen GPU device configuration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentCreateRequest'
+      responses:
+        '201':
+          description: The created deployment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+  /dedicated/deployments/{deployment_id}:
+    get:
+      tags: [Deployments]
+      operationId: getDeployment
+      summary: Retrieve Deployment
+      description: Retrieve a dedicated deployment by ID.
+      parameters:
+        - in: path
+          name: deployment_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The deployment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+    put:
+      tags: [Deployments]
+      operationId: updateDeployment
+      summary: Update Deployment
+      description: Update mutable properties of a dedicated deployment (e.g. replicas, autoscaling).
+      parameters:
+        - in: path
+          name: deployment_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentUpdateRequest'
+      responses:
+        '200':
+          description: The updated deployment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+    delete:
+      tags: [Deployments]
+      operationId: deleteDeployment
+      summary: Delete Deployment
+      description: Permanently delete a dedicated deployment and release its reserved GPU capacity.
+      parameters:
+        - in: path
+          name: deployment_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deployment deleted.
+  /dedicated/deployments/{deployment_id}/pause:
+    post:
+      tags: [Deployments]
+      operationId: pauseDeployment
+      summary: Pause Deployment
+      description: Pause a dedicated deployment to stop billing while preserving configuration.
+      parameters:
+        - in: path
+          name: deployment_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The paused deployment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+  /dedicated/deployments/{deployment_id}/resume:
+    post:
+      tags: [Deployments]
+      operationId: resumeDeployment
+      summary: Resume Deployment
+      description: Resume a previously-paused dedicated deployment.
+      parameters:
+        - in: path
+          name: deployment_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The resumed deployment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Send your Parasail API key as a Bearer token. Read-only keys can list and retrieve but cannot mutate.
+  schemas:
+    DeploymentCreateRequest:
+      type: object
+      required: [deploymentName, modelName, deviceConfigs, replicas]
+      properties:
+        deploymentName:
+          type: string
+          description: Human-readable name for the deployment.
+        modelName:
+          type: string
+          description: Hugging Face model name or Parasail-recognised model ID to serve.
+        deviceConfigs:
+          type: array
+          description: GPU device configurations to provision (count and SKU).
+          items:
+            type: object
+            properties:
+              device:
+                type: string
+                description: GPU SKU identifier (e.g. H100, A100, H200).
+              count:
+                type: integer
+        replicas:
+          type: integer
+          description: Number of replicas to run.
+        autoscaling:
+          type: object
+          properties:
+            min_replicas:
+              type: integer
+            max_replicas:
+              type: integer
+    DeploymentUpdateRequest:
+      type: object
+      properties:
+        replicas:
+          type: integer
+        autoscaling:
+          type: object
+          properties:
+            min_replicas:
+              type: integer
+            max_replicas:
+              type: integer
+    Deployment:
+      type: object
+      properties:
+        deployment_id:
+          type: string
+        deploymentName:
+          type: string
+        modelName:
+          type: string
+        status:
+          type: string
+          enum: [provisioning, running, paused, updating, deleting, failed]
+        deviceConfigs:
+          type: array
+          items:
+            type: object
+            properties:
+              device:
+                type: string
+              count:
+                type: integer
+        replicas:
+          type: integer
+        endpoint_url:
+          type: string
+          description: The OpenAI-compatible inference URL for this dedicated deployment.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
