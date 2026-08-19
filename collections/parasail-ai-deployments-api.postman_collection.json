@@ -1,0 +1,727 @@
+{
+  "item": [
+    {
+      "id": "46286a2c-149c-4c8a-b1df-74e06641f56e",
+      "name": "Deployments",
+      "description": {
+        "content": "Manage dedicated GPU deployments for custom and reserved-capacity inference.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a85221a-5300-4705-bebc-bc11cbd3abfa",
+          "name": "List Deployments",
+          "request": {
+            "name": "List Deployments",
+            "description": {
+              "content": "List all dedicated deployments owned by the authenticated organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dedicated",
+                "deployments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a82a85e-385d-4e7c-96e6-28813c590b92",
+              "name": "A list of dedicated deployments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dedicated",
+                    "deployments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"deployment_id\": \"string\",\n    \"deploymentName\": \"string\",\n    \"modelName\": \"string\",\n    \"status\": \"deleting\",\n    \"deviceConfigs\": [\n      {\n        \"device\": \"string\",\n        \"count\": 5662\n      },\n      {\n        \"device\": \"string\",\n        \"count\": 5836\n      }\n    ],\n    \"replicas\": 7195,\n    \"endpoint_url\": \"string\",\n    \"created_at\": \"2005-10-16T21:17:12.886Z\",\n    \"updated_at\": \"1976-03-14T11:06:14.547Z\"\n  },\n  {\n    \"deployment_id\": \"string\",\n    \"deploymentName\": \"string\",\n    \"modelName\": \"string\",\n    \"status\": \"provisioning\",\n    \"deviceConfigs\": [\n      {\n        \"device\": \"string\",\n        \"count\": 5500\n      },\n      {\n        \"device\": \"string\",\n        \"count\": 2117\n      }\n    ],\n    \"replicas\": 918,\n    \"endpoint_url\": \"string\",\n    \"created_at\": \"2023-09-11T08:08:41.521Z\",\n    \"updated_at\": \"2012-12-27T16:23:55.289Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30da2d72-9f5c-4b60-9eee-c75da06adc7b",
+          "name": "Create Deployment",
+          "request": {
+            "name": "Create Deployment",
+            "description": {
+              "content": "Provision a new dedicated deployment of a chosen model on a chosen GPU device configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dedicated",
+                "deployments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deploymentName\": \"<string>\",\n  \"modelName\": \"<string>\",\n  \"deviceConfigs\": [\n    {\n      \"device\": \"<string>\",\n      \"count\": \"<integer>\"\n    },\n    {\n      \"device\": \"<string>\",\n      \"count\": \"<integer>\"\n    }\n  ],\n  \"replicas\": \"<integer>\",\n  \"autoscaling\": {\n    \"min_replicas\": \"<integer>\",\n    \"max_replicas\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea8dae25-c2a9-45f2-b117-e5b1df29adc0",
+              "name": "The created deployment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dedicated",
+                    "deployments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deploymentName\": \"<string>\",\n  \"modelName\": \"<string>\",\n  \"deviceConfigs\": [\n    {\n      \"device\": \"<string>\",\n      \"count\": \"<integer>\"\n    },\n    {\n      \"device\": \"<string>\",\n      \"count\": \"<integer>\"\n    }\n  ],\n  \"replicas\": \"<integer>\",\n  \"autoscaling\": {\n    \"min_replicas\": \"<integer>\",\n    \"max_replicas\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deployment_id\": \"string\",\n  \"deploymentName\": \"string\",\n  \"modelName\": \"string\",\n  \"status\": \"running\",\n  \"deviceConfigs\": [\n    {\n      \"device\": \"string\",\n      \"count\": 197\n    },\n    {\n      \"device\": \"string\",\n      \"count\": 9570\n    }\n  ],\n  \"replicas\": 7472,\n  \"endpoint_url\": \"string\",\n  \"created_at\": \"2002-01-28T09:24:50.327Z\",\n  \"updated_at\": \"1996-11-15T16:57:48.156Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc4303ca-fc66-4e02-a7dd-6b5e84ceb633",
+          "name": "Retrieve Deployment",
+          "request": {
+            "name": "Retrieve Deployment",
+            "description": {
+              "content": "Retrieve a dedicated deployment by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dedicated",
+                "deployments",
+                ":deployment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b1cf628-917c-41c3-8c44-9e222c1029df",
+              "name": "The deployment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dedicated",
+                    "deployments",
+                    ":deployment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deployment_id\": \"string\",\n  \"deploymentName\": \"string\",\n  \"modelName\": \"string\",\n  \"status\": \"running\",\n  \"deviceConfigs\": [\n    {\n      \"device\": \"string\",\n      \"count\": 197\n    },\n    {\n      \"device\": \"string\",\n      \"count\": 9570\n    }\n  ],\n  \"replicas\": 7472,\n  \"endpoint_url\": \"string\",\n  \"created_at\": \"2002-01-28T09:24:50.327Z\",\n  \"updated_at\": \"1996-11-15T16:57:48.156Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1092a6cd-df73-4ac6-abbe-6828296c1d99",
+          "name": "Update Deployment",
+          "request": {
+            "name": "Update Deployment",
+            "description": {
+              "content": "Update mutable properties of a dedicated deployment (e.g. replicas, autoscaling).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dedicated",
+                "deployments",
+                ":deployment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"replicas\": \"<integer>\",\n  \"autoscaling\": {\n    \"min_replicas\": \"<integer>\",\n    \"max_replicas\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "374e955f-02a2-4335-b974-97c9eaa4c198",
+              "name": "The updated deployment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dedicated",
+                    "deployments",
+                    ":deployment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"replicas\": \"<integer>\",\n  \"autoscaling\": {\n    \"min_replicas\": \"<integer>\",\n    \"max_replicas\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deployment_id\": \"string\",\n  \"deploymentName\": \"string\",\n  \"modelName\": \"string\",\n  \"status\": \"running\",\n  \"deviceConfigs\": [\n    {\n      \"device\": \"string\",\n      \"count\": 197\n    },\n    {\n      \"device\": \"string\",\n      \"count\": 9570\n    }\n  ],\n  \"replicas\": 7472,\n  \"endpoint_url\": \"string\",\n  \"created_at\": \"2002-01-28T09:24:50.327Z\",\n  \"updated_at\": \"1996-11-15T16:57:48.156Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba37ae4c-fcff-4a72-b6a2-b7ba745c30a4",
+          "name": "Delete Deployment",
+          "request": {
+            "name": "Delete Deployment",
+            "description": {
+              "content": "Permanently delete a dedicated deployment and release its reserved GPU capacity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dedicated",
+                "deployments",
+                ":deployment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab42798a-c2f5-480c-82ee-a2f6e94d5c23",
+              "name": "Deployment deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dedicated",
+                    "deployments",
+                    ":deployment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5919f92-3f95-4336-bcfe-aea15acba72e",
+          "name": "Pause Deployment",
+          "request": {
+            "name": "Pause Deployment",
+            "description": {
+              "content": "Pause a dedicated deployment to stop billing while preserving configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dedicated",
+                "deployments",
+                ":deployment_id",
+                "pause"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a263389-402f-456f-a9e8-716a21a03aeb",
+              "name": "The paused deployment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dedicated",
+                    "deployments",
+                    ":deployment_id",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deployment_id\": \"string\",\n  \"deploymentName\": \"string\",\n  \"modelName\": \"string\",\n  \"status\": \"running\",\n  \"deviceConfigs\": [\n    {\n      \"device\": \"string\",\n      \"count\": 197\n    },\n    {\n      \"device\": \"string\",\n      \"count\": 9570\n    }\n  ],\n  \"replicas\": 7472,\n  \"endpoint_url\": \"string\",\n  \"created_at\": \"2002-01-28T09:24:50.327Z\",\n  \"updated_at\": \"1996-11-15T16:57:48.156Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abff5c80-c399-4c9d-91c0-36c53d0c63b2",
+          "name": "Resume Deployment",
+          "request": {
+            "name": "Resume Deployment",
+            "description": {
+              "content": "Resume a previously-paused dedicated deployment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dedicated",
+                "deployments",
+                ":deployment_id",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "794f92c3-782f-49ed-a933-ca35dc0f6dc0",
+              "name": "The resumed deployment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dedicated",
+                    "deployments",
+                    ":deployment_id",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deployment_id\": \"string\",\n  \"deploymentName\": \"string\",\n  \"modelName\": \"string\",\n  \"status\": \"running\",\n  \"deviceConfigs\": [\n    {\n      \"device\": \"string\",\n      \"count\": 197\n    },\n    {\n      \"device\": \"string\",\n      \"count\": 9570\n    }\n  ],\n  \"replicas\": 7472,\n  \"endpoint_url\": \"string\",\n  \"created_at\": \"2002-01-28T09:24:50.327Z\",\n  \"updated_at\": \"1996-11-15T16:57:48.156Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.parasail.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b21a489-91bc-4607-9041-1914fd3c7c91",
+    "name": "Parasail Batch Deployments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off\nserverless pricing (with cached tokens at an additional 30% off). Supports\n/v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).\n\n\nContact Support:\n Name: Parasail",
+      "type": "text/plain"
+    }
+  }
+}

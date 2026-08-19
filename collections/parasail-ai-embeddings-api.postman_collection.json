@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "1fab0cf8-1770-44a6-b0e0-87210e167e88",
+      "name": "Embeddings",
+      "description": {
+        "content": "Vector embeddings for RAG, semantic search, and similarity workloads.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "387bb2e6-3e23-42cd-b0bd-75d38c67ef32",
+          "name": "Create Embedding",
+          "request": {
+            "name": "Create Embedding",
+            "description": {
+              "content": "Generate vector embeddings for one or more input strings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "embeddings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ea21221-6a23-478b-ab65-87c572d86b56",
+              "name": "An embeddings response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embeddings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"encoding_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"object\": \"embedding\",\n      \"embedding\": [\n        8673.070892957037,\n        9810.30439297232\n      ],\n      \"index\": 6839\n    },\n    {\n      \"object\": \"embedding\",\n      \"embedding\": [\n        2054.152096234283,\n        3106.763798112967\n      ],\n      \"index\": 1628\n    }\n  ],\n  \"model\": \"string\",\n  \"usage\": {\n    \"prompt_tokens\": 2549,\n    \"completion_tokens\": 8951,\n    \"total_tokens\": 167\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.parasail.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9d8333cc-7d14-4195-b2bb-ad5940b2aeb5",
+    "name": "Parasail Batch Embeddings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off\nserverless pricing (with cached tokens at an additional 30% off). Supports\n/v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).\n\n\nContact Support:\n Name: Parasail",
+      "type": "text/plain"
+    }
+  }
+}

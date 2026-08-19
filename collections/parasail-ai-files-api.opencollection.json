@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Parasail Batch Files API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.parasail.io/v1/files"
+          },
+          "docs": "List files uploaded to the Batch API."
+        },
+        {
+          "info": {
+            "name": "Upload File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.parasail.io/v1/files",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "purpose",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a JSONL file to use as input or to download as output from a batch job."
+        },
+        {
+          "info": {
+            "name": "Retrieve File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.parasail.io/v1/files/:file_id",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for an uploaded file."
+        },
+        {
+          "info": {
+            "name": "Delete File",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.parasail.io/v1/files/:file_id",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an uploaded file."
+        },
+        {
+          "info": {
+            "name": "Download File Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.parasail.io/v1/files/:file_id/content",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download the raw bytes for a previously-uploaded file (including batch output files)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

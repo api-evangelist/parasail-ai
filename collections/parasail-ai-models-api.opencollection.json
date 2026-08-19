@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Parasail Batch Models API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.parasail.io/v1/models"
+          },
+          "docs": "List the serverless models currently available on Parasail."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
