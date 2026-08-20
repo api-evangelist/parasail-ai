@@ -15,6 +15,17 @@ description: |
   Navigation); raised a $32M Series A in April 2026 (Touring Capital and Kindred
   Ventures) bringing total funding to $42M.
 tags:
+  - Artificial Intelligence
+  - GPU
+  - Inference
+  - Large Language Models
+  - Open Source Models
+  - Hugging Face
+  - Batch
+  - Embeddings
+  - Tokenmaxxing
+  - Supercloud
+tags_raw:
   - AI
   - Artificial Intelligence
   - GPU
@@ -109,6 +120,8 @@ apis:
   humanURL: https://docs.parasail.io/parasail-docs/
   baseURL: https://api.parasail.io/v1
   tags:
+  - Deployment
+  tags_raw:
   - Deployments
   properties:
   - type: OpenAPI
@@ -149,6 +162,8 @@ apis:
   humanURL: https://docs.parasail.io/parasail-docs/
   baseURL: https://api.parasail.io/v1
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
