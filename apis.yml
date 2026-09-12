@@ -212,6 +212,8 @@ apis:
   - type: JSONSchema
     url: json-schema/parasail-deployment-schema.json
 common:
+  - type: Website
+    url: https://www.parasail.io/
   - type: CapabilityMap
     url: capabilities/parasail-ai-capability-edges.yml
     name: Parasail Business Capability Map
