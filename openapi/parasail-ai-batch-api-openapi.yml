@@ -1,13 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Parasail Batch API
   description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
 
     serverless pricing (with cached tokens at an additional 30% off). Supports
 
-    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
-
-    '
+    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).'
   version: '1.0'
   contact:
     name: Parasail
@@ -105,29 +103,18 @@ paths:
                 $ref: '#/components/schemas/Batch'
 components:
   schemas:
-    BatchCreateRequest:
+    BatchList:
       type: object
-      required:
-      - input_file_id
-      - endpoint
-      - completion_window
       properties:
-        input_file_id:
+        object:
           type: string
-          description: ID of an uploaded JSONL file containing the batch requests.
-        endpoint:
-          type: string
-          enum:
-          - /v1/chat/completions
-          - /v1/embeddings
-        completion_window:
-          type: string
-          enum:
-          - 24h
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
+          example: list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Batch'
+        has_more:
+          type: boolean
     Batch:
       type: object
       properties:
@@ -172,18 +159,29 @@ components:
           type: integer
         metadata:
           type: object
-    BatchList:
+    BatchCreateRequest:
       type: object
+      required:
+      - input_file_id
+      - endpoint
+      - completion_window
       properties:
-        object:
+        input_file_id:
           type: string
-          example: list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Batch'
-        has_more:
-          type: boolean
+          description: ID of an uploaded JSONL file containing the batch requests.
+        endpoint:
+          type: string
+          enum:
+          - /v1/chat/completions
+          - /v1/embeddings
+        completion_window:
+          type: string
+          enum:
+          - 24h
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,0 +1,36 @@
+# Front Door AI Index — parasail-ai — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: parasail-ai
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.parasail.io
+  final_host: www.parasail.io
+  ownership: own
+  owner: parasail-ai
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 35
+  host_score: 35
+  density: 35.14
+  words: 996
+  tiers:
+    agentic: 18
+    core: 10
+    model: 7
+  ambiguous: 3
+  top_terms:
+    inference: 11
+    AI: 9
+    GPT: 3
+    agent: 3
+    agentic: 3
+    AI agent: 2
+    Claude: 1
+    Hugging Face: 1
+    LLMs: 1
+    Llama: 1
+    OpenAI: 1
+    embedding: 1

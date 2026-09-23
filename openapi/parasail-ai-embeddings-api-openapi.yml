@@ -1,20 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Parasail Batch Embeddings API
-  description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
+  title: Parasail Inference Embeddings API
+  description: 'OpenAI-compatible inference API for Parasail''s AI Supercloud. Provides serverless
 
-    serverless pricing (with cached tokens at an additional 30% off). Supports
+    pay-per-token access to popular open-weight LLMs, embedding models, image generation
 
-    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
-
-    '
+    models, and text-to-speech models running on Parasail''s global GPU network.'
   version: '1.0'
   contact:
     name: Parasail
     url: https://docs.parasail.io/parasail-docs/
 servers:
 - url: https://api.parasail.io/v1
-  description: Parasail Batch endpoint
+  description: Parasail OpenAI-compatible inference endpoint
 security:
 - bearerAuth: []
 tags:
@@ -43,35 +41,6 @@ paths:
                 $ref: '#/components/schemas/EmbeddingResponse'
 components:
   schemas:
-    EmbeddingRequest:
-      type: object
-      required:
-      - model
-      - input
-      properties:
-        model:
-          type: string
-          description: Embedding model ID.
-        input:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        encoding_format:
-          type: string
-          enum:
-          - float
-          - base64
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-        completion_tokens:
-          type: integer
-        total_tokens:
-          type: integer
     EmbeddingResponse:
       type: object
       properties:
@@ -96,6 +65,35 @@ components:
           type: string
         usage:
           $ref: '#/components/schemas/Usage'
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+    EmbeddingRequest:
+      type: object
+      required:
+      - model
+      - input
+      properties:
+        model:
+          type: string
+          description: Embedding model ID.
+        input:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        encoding_format:
+          type: string
+          enum:
+          - float
+          - base64
   securitySchemes:
     bearerAuth:
       type: http

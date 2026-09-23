@@ -1,20 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Parasail Batch Models API
-  description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
+  title: Parasail Inference Models API
+  description: 'OpenAI-compatible inference API for Parasail''s AI Supercloud. Provides serverless
 
-    serverless pricing (with cached tokens at an additional 30% off). Supports
+    pay-per-token access to popular open-weight LLMs, embedding models, image generation
 
-    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
-
-    '
+    models, and text-to-speech models running on Parasail''s global GPU network.'
   version: '1.0'
   contact:
     name: Parasail
     url: https://docs.parasail.io/parasail-docs/
 servers:
 - url: https://api.parasail.io/v1
-  description: Parasail Batch endpoint
+  description: Parasail OpenAI-compatible inference endpoint
 security:
 - bearerAuth: []
 tags:

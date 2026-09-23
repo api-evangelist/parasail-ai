@@ -1,13 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Parasail Batch Files API
   description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
 
     serverless pricing (with cached tokens at an additional 30% off). Supports
 
-    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
-
-    '
+    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).'
   version: '1.0'
   contact:
     name: Parasail
@@ -123,6 +121,16 @@ paths:
                 format: binary
 components:
   schemas:
+    FileList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
     File:
       type: object
       properties:
@@ -139,16 +147,6 @@ components:
           type: string
         purpose:
           type: string
-    FileList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/File'
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,26 +1,36 @@
 {
   "provider": "parasail-ai",
   "sources": [
-    "parasail-ai-batch-api-openapi.yml",
-    "parasail-ai-chat-api-openapi.yml",
-    "parasail-ai-completions-api-openapi.yml",
-    "parasail-ai-deployments-api-openapi.yml",
-    "parasail-ai-embeddings-api-openapi.yml",
-    "parasail-ai-files-api-openapi.yml",
-    "parasail-ai-models-api-openapi.yml"
+    "_original/parasail-batch-api-openapi.yml",
+    "_original/parasail-dedicated-api-openapi.yml",
+    "_original/parasail-inference-api-openapi.yml"
   ],
   "outputs": [
     "parasail-ai-batch-api-openapi.yml",
+    "parasail-ai-files-api-openapi.yml",
+    "parasail-ai-deployments-api-openapi.yml",
     "parasail-ai-chat-api-openapi.yml",
     "parasail-ai-completions-api-openapi.yml",
-    "parasail-ai-deployments-api-openapi.yml",
     "parasail-ai-embeddings-api-openapi.yml",
-    "parasail-ai-files-api-openapi.yml",
     "parasail-ai-models-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "parasail-batch-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "parasail-dedicated-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "parasail-inference-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "parasail-ai-batch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parasail-ai-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parasail-ai-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parasail-ai-deployments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parasail-ai-embeddings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parasail-ai-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parasail-ai-models-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

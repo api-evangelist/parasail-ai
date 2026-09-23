@@ -1,20 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Parasail Batch Deployments API
-  description: 'OpenAI-compatible Batch API for offline, asynchronous inference workloads at 50% off
+  title: Parasail Dedicated Deployments API
+  description: 'Control-plane API for managing Parasail Dedicated and Dedicated Serverless deployments.
 
-    serverless pricing (with cached tokens at an additional 30% off). Supports
+    Create, list, retrieve, update, pause, resume, and delete reserved GPU deployments
 
-    /v1/chat/completions and /v1/embeddings in the OpenAI Batch file format (JSONL).
-
-    '
+    that run a chosen Hugging Face or custom model on isolated capacity.'
   version: '1.0'
   contact:
     name: Parasail
     url: https://docs.parasail.io/parasail-docs/
 servers:
-- url: https://api.parasail.io/v1
-  description: Parasail Batch endpoint
+- url: https://api.parasail.io/api/v1
+  description: Parasail Dedicated control plane
 security:
 - bearerAuth: []
 tags:
@@ -170,41 +168,6 @@ components:
               type: integer
             max_replicas:
               type: integer
-    DeploymentCreateRequest:
-      type: object
-      required:
-      - deploymentName
-      - modelName
-      - deviceConfigs
-      - replicas
-      properties:
-        deploymentName:
-          type: string
-          description: Human-readable name for the deployment.
-        modelName:
-          type: string
-          description: Hugging Face model name or Parasail-recognised model ID to serve.
-        deviceConfigs:
-          type: array
-          description: GPU device configurations to provision (count and SKU).
-          items:
-            type: object
-            properties:
-              device:
-                type: string
-                description: GPU SKU identifier (e.g. H100, A100, H200).
-              count:
-                type: integer
-        replicas:
-          type: integer
-          description: Number of replicas to run.
-        autoscaling:
-          type: object
-          properties:
-            min_replicas:
-              type: integer
-            max_replicas:
-              type: integer
     Deployment:
       type: object
       properties:
@@ -243,8 +206,43 @@ components:
         updated_at:
           type: string
           format: date-time
+    DeploymentCreateRequest:
+      type: object
+      required:
+      - deploymentName
+      - modelName
+      - deviceConfigs
+      - replicas
+      properties:
+        deploymentName:
+          type: string
+          description: Human-readable name for the deployment.
+        modelName:
+          type: string
+          description: Hugging Face model name or Parasail-recognised model ID to serve.
+        deviceConfigs:
+          type: array
+          description: GPU device configurations to provision (count and SKU).
+          items:
+            type: object
+            properties:
+              device:
+                type: string
+                description: GPU SKU identifier (e.g. H100, A100, H200).
+              count:
+                type: integer
+        replicas:
+          type: integer
+          description: Number of replicas to run.
+        autoscaling:
+          type: object
+          properties:
+            min_replicas:
+              type: integer
+            max_replicas:
+              type: integer
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
-      description: Send your Parasail API key as a Bearer token.
+      description: Send your Parasail API key as a Bearer token. Read-only keys can list and retrieve but cannot mutate.
