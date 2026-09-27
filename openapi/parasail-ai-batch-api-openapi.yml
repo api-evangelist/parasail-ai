@@ -103,18 +103,29 @@ paths:
                 $ref: '#/components/schemas/Batch'
 components:
   schemas:
-    BatchList:
+    BatchCreateRequest:
       type: object
+      required:
+      - input_file_id
+      - endpoint
+      - completion_window
       properties:
-        object:
+        input_file_id:
           type: string
-          example: list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Batch'
-        has_more:
-          type: boolean
+          description: ID of an uploaded JSONL file containing the batch requests.
+        endpoint:
+          type: string
+          enum:
+          - /v1/chat/completions
+          - /v1/embeddings
+        completion_window:
+          type: string
+          enum:
+          - 24h
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
     Batch:
       type: object
       properties:
@@ -159,29 +170,18 @@ components:
           type: integer
         metadata:
           type: object
-    BatchCreateRequest:
+    BatchList:
       type: object
-      required:
-      - input_file_id
-      - endpoint
-      - completion_window
       properties:
-        input_file_id:
+        object:
           type: string
-          description: ID of an uploaded JSONL file containing the batch requests.
-        endpoint:
-          type: string
-          enum:
-          - /v1/chat/completions
-          - /v1/embeddings
-        completion_window:
-          type: string
-          enum:
-          - 24h
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
+          example: list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Batch'
+        has_more:
+          type: boolean
   securitySchemes:
     bearerAuth:
       type: http

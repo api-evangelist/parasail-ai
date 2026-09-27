@@ -41,30 +41,6 @@ paths:
                 $ref: '#/components/schemas/EmbeddingResponse'
 components:
   schemas:
-    EmbeddingResponse:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              object:
-                type: string
-                example: embedding
-              embedding:
-                type: array
-                items:
-                  type: number
-              index:
-                type: integer
-        model:
-          type: string
-        usage:
-          $ref: '#/components/schemas/Usage'
     Usage:
       type: object
       properties:
@@ -94,6 +70,30 @@ components:
           enum:
           - float
           - base64
+    EmbeddingResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              object:
+                type: string
+                example: embedding
+              embedding:
+                type: array
+                items:
+                  type: number
+              index:
+                type: integer
+        model:
+          type: string
+        usage:
+          $ref: '#/components/schemas/Usage'
   securitySchemes:
     bearerAuth:
       type: http

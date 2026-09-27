@@ -41,15 +41,6 @@ paths:
                 $ref: '#/components/schemas/CompletionResponse'
 components:
   schemas:
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-        completion_tokens:
-          type: integer
-        total_tokens:
-          type: integer
     CompletionResponse:
       type: object
       properties:
@@ -75,6 +66,15 @@ components:
                 type: string
         usage:
           $ref: '#/components/schemas/Usage'
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
     CompletionRequest:
       type: object
       required:
