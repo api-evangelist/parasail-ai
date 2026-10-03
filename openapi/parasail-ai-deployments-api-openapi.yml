@@ -156,11 +156,34 @@ paths:
                 $ref: '#/components/schemas/Deployment'
 components:
   schemas:
-    DeploymentUpdateRequest:
+    DeploymentCreateRequest:
       type: object
+      required:
+      - deploymentName
+      - modelName
+      - deviceConfigs
+      - replicas
       properties:
+        deploymentName:
+          type: string
+          description: Human-readable name for the deployment.
+        modelName:
+          type: string
+          description: Hugging Face model name or Parasail-recognised model ID to serve.
+        deviceConfigs:
+          type: array
+          description: GPU device configurations to provision (count and SKU).
+          items:
+            type: object
+            properties:
+              device:
+                type: string
+                description: GPU SKU identifier (e.g. H100, A100, H200).
+              count:
+                type: integer
         replicas:
           type: integer
+          description: Number of replicas to run.
         autoscaling:
           type: object
           properties:
@@ -206,34 +229,11 @@ components:
         updated_at:
           type: string
           format: date-time
-    DeploymentCreateRequest:
+    DeploymentUpdateRequest:
       type: object
-      required:
-      - deploymentName
-      - modelName
-      - deviceConfigs
-      - replicas
       properties:
-        deploymentName:
-          type: string
-          description: Human-readable name for the deployment.
-        modelName:
-          type: string
-          description: Hugging Face model name or Parasail-recognised model ID to serve.
-        deviceConfigs:
-          type: array
-          description: GPU device configurations to provision (count and SKU).
-          items:
-            type: object
-            properties:
-              device:
-                type: string
-                description: GPU SKU identifier (e.g. H100, A100, H200).
-              count:
-                type: integer
         replicas:
           type: integer
-          description: Number of replicas to run.
         autoscaling:
           type: object
           properties:
