@@ -87,26 +87,6 @@ apis:
     url: json-schema/parasail-batch-schema.json
   - type: JSONSchema
     url: json-schema/parasail-deployment-schema.json
-- aid: parasail-ai:parasail-ai-chat-api
-  name: Parasail Chat API
-  description: Chat completions for conversational LLM workloads.
-  humanURL: https://docs.parasail.io/parasail-docs/
-  baseURL: https://api.parasail.io/v1
-  tags:
-  - Chat
-  properties:
-  - type: OpenAPI
-    url: openapi/parasail-ai-chat-api-openapi.yml
-  - type: Documentation
-    url: https://docs.parasail.io/parasail-docs/
-  - type: JSONSchema
-    url: json-schema/parasail-chat-completion-schema.json
-  - type: JSONLD
-    url: json-ld/parasail-context.jsonld
-  - type: JSONSchema
-    url: json-schema/parasail-batch-schema.json
-  - type: JSONSchema
-    url: json-schema/parasail-deployment-schema.json
 - aid: parasail-ai:parasail-ai-completions-api
   name: Parasail Completions API
   description: Legacy text completions for prompt-only LLM workloads.
@@ -201,6 +181,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/parasail-ai-models-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parasail.io/parasail-docs/
+  - type: JSONSchema
+    url: json-schema/parasail-chat-completion-schema.json
+  - type: JSONLD
+    url: json-ld/parasail-context.jsonld
+  - type: JSONSchema
+    url: json-schema/parasail-batch-schema.json
+  - type: JSONSchema
+    url: json-schema/parasail-deployment-schema.json
+- aid: parasail-ai:parasail-ai-chat-completions-api
+  name: Parasail Chat Completions API
+  description: Chat completions for conversational LLM workloads.
+  humanURL: https://docs.parasail.io/parasail-docs/
+  baseURL: https://api.parasail.io/v1
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/parasail-ai-chat-completions-api-openapi.yml
   - type: Documentation
     url: https://docs.parasail.io/parasail-docs/
   - type: JSONSchema

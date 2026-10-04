@@ -16,13 +16,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: Chat
+- name: Chat Completions
   description: Chat completions for conversational LLM workloads.
 paths:
   /chat/completions:
     post:
       tags:
-      - Chat
+      - Chat Completions
       operationId: createChatCompletion
       summary: Create Chat Completion
       description: Generate a chat completion from a list of messages using an OpenAI-compatible request body.
@@ -45,15 +45,6 @@ paths:
                 description: Server-Sent Events stream when stream=true.
 components:
   schemas:
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-        completion_tokens:
-          type: integer
-        total_tokens:
-          type: integer
     ChatCompletionResponse:
       type: object
       properties:
@@ -137,6 +128,15 @@ components:
         response_format:
           type: object
           description: JSON schema or json_object response format constraint.
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
   securitySchemes:
     bearerAuth:
       type: http

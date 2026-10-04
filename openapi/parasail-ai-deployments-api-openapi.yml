@@ -191,6 +191,18 @@ components:
               type: integer
             max_replicas:
               type: integer
+    DeploymentUpdateRequest:
+      type: object
+      properties:
+        replicas:
+          type: integer
+        autoscaling:
+          type: object
+          properties:
+            min_replicas:
+              type: integer
+            max_replicas:
+              type: integer
     Deployment:
       type: object
       properties:
@@ -229,18 +241,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    DeploymentUpdateRequest:
-      type: object
-      properties:
-        replicas:
-          type: integer
-        autoscaling:
-          type: object
-          properties:
-            min_replicas:
-              type: integer
-            max_replicas:
-              type: integer
   securitySchemes:
     bearerAuth:
       type: http

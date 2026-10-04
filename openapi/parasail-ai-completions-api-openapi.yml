@@ -41,28 +41,6 @@ paths:
                 $ref: '#/components/schemas/CompletionResponse'
 components:
   schemas:
-    CompletionRequest:
-      type: object
-      required:
-      - model
-      - prompt
-      properties:
-        model:
-          type: string
-        prompt:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        max_tokens:
-          type: integer
-        temperature:
-          type: number
-        top_p:
-          type: number
-        stream:
-          type: boolean
     Usage:
       type: object
       properties:
@@ -97,6 +75,28 @@ components:
                 type: string
         usage:
           $ref: '#/components/schemas/Usage'
+    CompletionRequest:
+      type: object
+      required:
+      - model
+      - prompt
+      properties:
+        model:
+          type: string
+        prompt:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        max_tokens:
+          type: integer
+        temperature:
+          type: number
+        top_p:
+          type: number
+        stream:
+          type: boolean
   securitySchemes:
     bearerAuth:
       type: http
