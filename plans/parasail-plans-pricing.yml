@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 aid: parasail
 specVersion: '0.1'
 name: Parasail Plans & Pricing
@@ -126,3 +130,72 @@ plans:
       - name: Custom model onboarding and dedicated capacity
       - name: Premium support and SLOs
       - name: Volume discounts
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  units:
+  - compute
+  - negotiated
+  - object
+  - seat
+  - token
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: User
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Dedicated Serverless
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Dedicated Serverless Pro
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Dedicated
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - hour
+  - name: Batch
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - token
+    periods:
+    - per-use
+  - name: Enterprise
+    access: other
+    model: negotiated
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
