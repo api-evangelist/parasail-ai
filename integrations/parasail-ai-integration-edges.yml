@@ -11,10 +11,10 @@ edges:
   - inference-host
   router_signals:
     inference-host:
-      models: 38
+      models: 39
       router_ids:
       - Parasail
-      tools_share: 0.63
+      tools_share: 0.62
       structured_output_share: 0.97
   matched_by: verified-token-table
   detected_by: sweep-model-routing.py
@@ -35,7 +35,7 @@ edges:
     note: 'parasail-ai declares OpenAI compatibility: ''description: ''OpenAI-compatible inference API for Parasail''''s
       AI Supercloud. Provides serverless'''
     detected_by: sweep-model-routing.py
-    detected: '2026-10-13'
+    detected: '2026-10-15'
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
 generated: '2026-10-13'
