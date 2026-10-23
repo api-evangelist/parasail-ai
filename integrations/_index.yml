@@ -31,6 +31,19 @@
     note: 'parasail-ai declares OpenAI compatibility: ''description: ''OpenAI-compatible inference API for Parasail''''s
       AI Supercloud. Provides serverless'''
     detected_by: sweep-model-routing.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: parasail-ai-hugging-face-hugging-face-hub
+  label: Hugging Face (hugging-face-hub)
+  partner: hugging-face
+  partner_name: Hugging Face (hugging-face-hub)
+  category: Hugging Face Hub datasets
+  type: marketplace
+  marketplace: hugging-face-hub
+  channel: partner-built
+  evidence: https://huggingface.co/parasail-ai
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
