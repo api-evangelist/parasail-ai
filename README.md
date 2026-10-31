@@ -1,4 +1,4 @@
-# Parasail (parasail)
+# Parasail
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -77,147 +77,171 @@ contracts. Co-founded by Mike Henry (ex-Mythic) and Tim Harris (ex-Swift
 Navigation); raised a $32M Series A in April 2026 (Touring Capital and Kindred
 Ventures) bringing total funding to $42M.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/parasail-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/parasail-ai/refs/heads/main/apis.yml)
+**Areas:** Artificial Intelligence · GPU · Inference · LLM · Open Source Models · Hugging Face · Batch · Embeddings · Tokenmaxxing · Supercloud
 
-## Scope
+## Parasail on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Parasail is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/parasail-ai/](https://apis.io/providers/parasail-ai/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- AI
-- Artificial Intelligence
-- GPU
-- Inference
-- Large Language Models
-- Open Source Models
-- Hugging Face
-- Batch
-- Embeddings
-- Tokenmaxxing
-- Supercloud
+- [Parasail Batch API](https://apis.io/apis/parasail-ai/parasail-ai-batch-api/) — Create, list, retrieve, and cancel batch inference jobs.
+- [Parasail Completions API](https://apis.io/apis/parasail-ai/parasail-ai-completions-api/) — Legacy text completions for prompt-only LLM workloads.
+- [Parasail Deployments API](https://apis.io/apis/parasail-ai/parasail-ai-deployments-api/) — Manage dedicated GPU deployments for custom and reserved-capacity inference.
+- [Parasail Embeddings API](https://apis.io/apis/parasail-ai/parasail-ai-embeddings-api/) — Vector embeddings for RAG, semantic search, and similarity workloads.
+- [Parasail Files API](https://apis.io/apis/parasail-ai/parasail-ai-files-api/) — Upload and manage input/output JSONL files used by Batch jobs.
+- [Parasail Models API](https://apis.io/apis/parasail-ai/parasail-ai-models-api/) — Discover the models currently exposed on the serverless tier.
+- [Parasail Chat Completions API](https://apis.io/apis/parasail-ai/parasail-ai-chat-completions-api/) — Chat completions for conversational LLM workloads.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25T00:00:00.000Z
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Parasail Inference API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-OpenAI-compatible real-time and streaming inference API exposing serverless
-access to popular open-weight LLMs, embedding models, and the model catalog.
-Endpoints: /v1/chat/completions, /v1/completions, /v1/embeddings, /v1/models.
-Bearer-token authentication; pay-per-token billing; supports streaming, tool
-use, and structured outputs. Compatible with the OpenAI Python and TypeScript
-clients by overriding base_url.
+- [Parasail Ai Agentic Access](https://apis.io/agentic-access/parasail-ai/parasail-ai-agentic-access/)
 
-- **Human URL:** [https://docs.parasail.io/parasail-docs/](https://docs.parasail.io/parasail-docs/)
-- **Base URL:** `https://api.parasail.io/v1`
+#### JSON Schema (3)
 
-#### Tags
+The data models the API reads and writes.
 
-- AI
-- Artificial Intelligence
-- Inference
-- Chat
-- Embeddings
-- Models
+- [Parasail Batch](https://apis.io/schemas/parasail-ai/parasail-batch/)
+- [Parasail Chat Completion](https://apis.io/schemas/parasail-ai/parasail-chat-completion/)
+- [Parasail Dedicated Deployment](https://apis.io/schemas/parasail-ai/parasail-deployment/)
 
-#### Properties
+#### JSON-LD (1)
 
+Linked-data contexts for the provider's vocabulary.
+
+- [Parasail Context](https://apis.io/jsonld/parasail-ai/parasail-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Parasail Vocabulary](https://apis.io/vocabularies/parasail-ai/parasail-ai-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Parasail Chat Completion Example](https://apis.io/examples/parasail-ai/parasail-chat-completion-example/)
+- [Parasail Create Batch Example](https://apis.io/examples/parasail-ai/parasail-create-batch-example/)
+- [Parasail Create Deployment Example](https://apis.io/examples/parasail-ai/parasail-create-deployment-example/)
+- [Parasail Embedding Example](https://apis.io/examples/parasail-ai/parasail-embedding-example/)
+
+#### Collections (10)
+
+Postman and Open Collection request collections.
+
+- [Parasail Batch API](https://apis.io/collections/parasail-ai/open-parasail-ai-batch-api/)
+- [Parasail Batch Chat API](https://apis.io/collections/parasail-ai/open-parasail-ai-chat-api/)
+- [Parasail Batch Completions API](https://apis.io/collections/parasail-ai/open-parasail-ai-completions-api/)
+- [Parasail Batch Deployments API](https://apis.io/collections/parasail-ai/open-parasail-ai-deployments-api/)
+- [Parasail Batch Embeddings API](https://apis.io/collections/parasail-ai/open-parasail-ai-embeddings-api/)
+- [Parasail Batch Files API](https://apis.io/collections/parasail-ai/open-parasail-ai-files-api/)
+- [Parasail Batch Models API](https://apis.io/collections/parasail-ai/open-parasail-ai-models-api/)
+- [Parasail Batch API](https://apis.io/collections/parasail-ai/open-parasail-batch-api/)
+- [Parasail Dedicated Deployments API](https://apis.io/collections/parasail-ai/open-parasail-dedicated-api/)
+- [Parasail Inference API](https://apis.io/collections/parasail-ai/open-parasail-inference-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Parasail — jsonschema rules](https://apis.io/rules/parasail-ai/parasail-ai-jsonschema-spectral-rules/)
+- [Parasail — parasail rules](https://apis.io/rules/parasail-ai/parasail-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Parasail Ai Authentication](https://apis.io/security/parasail-ai/parasail-ai-authentication/)
+- [Parasail Ai Domain Security](https://apis.io/security/parasail-ai/parasail-ai-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Parasail Plans Pricing](https://apis.io/plans/parasail-ai/parasail-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Parasail Rate Limits](https://apis.io/rate-limits/parasail-ai/parasail-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Parasail Finops](https://apis.io/finops/parasail-ai/parasail-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.parasail.io/)
 - [Documentation](https://docs.parasail.io/parasail-docs/)
-- [OpenAPI](openapi/parasail-inference-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/parasail-inference-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/parasail-inference-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/parasail-chat-completion-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/parasail-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-
-### Parasail Batch API
-
-OpenAI-compatible Batch API for asynchronous inference workloads at 50% off
-serverless pricing (with an additional 30% off cached tokens). Supports
-/v1/chat/completions and /v1/embeddings in the OpenAI Batch file format
-(JSONL) with a 24-hour completion window. Includes a Files surface for
-uploading and downloading input/output/error JSONL files. Ideal for offline
-enrichment, dataset processing, and large-scale tokenmaxxing.
-
-- **Human URL:** [https://docs.parasail.io/parasail-docs/](https://docs.parasail.io/parasail-docs/)
-- **Base URL:** `https://api.parasail.io/v1`
-
-#### Tags
-
-- AI
-- Artificial Intelligence
-- Batch
-- Files
-
-#### Properties
-
-- [Documentation](https://docs.parasail.io/parasail-docs/)
-- [OpenAPI](openapi/parasail-batch-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/parasail-batch-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/parasail-batch-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/parasail-batch-schema.json) — [JSON Schema](https://json-schema.org/specification)
-
-### Parasail Dedicated Deployments API
-
-Control-plane API for managing Parasail Dedicated and Dedicated Serverless
-deployments. Provision reserved GPU capacity (H100, A100, H200, etc.) running
-any Hugging Face or custom model, then list, retrieve, update, pause, resume,
-and delete deployments. Read-only API keys can list and retrieve but cannot
-mutate. Endpoint: /api/v1/dedicated/deployments.
-
-- **Human URL:** [https://docs.parasail.io/parasail-docs/](https://docs.parasail.io/parasail-docs/)
-- **Base URL:** `https://api.parasail.io/api/v1`
-
-#### Tags
-
-- AI
-- Artificial Intelligence
-- GPU
-- Deployments
-- Dedicated
-
-#### Properties
-
-- [Documentation](https://docs.parasail.io/parasail-docs/)
-- [OpenAPI](openapi/parasail-dedicated-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/parasail-dedicated-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/parasail-dedicated-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/parasail-deployment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-
-## Common Properties
-
-- [Portal](https://parasail.io)
-- [Documentation](https://docs.parasail.io/parasail-docs/)
-- [Sign Up](https://www.saas.parasail.io/)
 - [Pricing](https://www.saas.parasail.io/pricing)
 - [Blog](https://parasail.io/blogs)
-- [About Us](https://parasail.io/about-us)
-- [Careers](https://job-boards.greenhouse.io/parasail)
-- [Privacy Policy](https://parasail.io/legal/privacy-policy)
-- [Terms of Service](https://parasail.io/legal/terms-of-service)
-- [GitHub Organization](https://github.com/parasail-ai)
-- [Forum](https://discord.gg/parasail)
-- [LinkedIn](https://www.linkedin.com/company/parasail-ai)
-- [X (Twitter)](https://x.com/parasail_io)
-- [SDK](https://github.com/parasail-ai/openai-batch)
-- [Code Examples](https://github.com/parasail-ai/cookbook)
-- [Tool](https://github.com/parasail-ai/kvcached)
-- [Tool](https://github.com/parasail-ai/vllm-public)
-- [Tool](https://github.com/parasail-ai/curator)
-- [Tool](https://github.com/parasail-ai/simple-evals)
-- [Tool](https://github.com/parasail-ai/VLMEvalKit)
-- [Plans](plans/parasail-plans-pricing.yml)
-- [Rate Limits](rate-limits/parasail-rate-limits.yml)
-- [Fin Ops](finops/parasail-finops.yml)
-- [Features](undefined)
+- [Terms of service](https://parasail.io/legal/terms-of-service)
+- [Privacy policy](https://parasail.io/legal/privacy-policy)
+- [GitHub](https://github.com/parasail-ai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 43.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 67.6 |
+| Contract governance | 13.6 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 45.2 |
+| Access clarity | 42.1 |
+
+**Agent readiness 21.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/parasail-ai/](https://apis.io/providers/parasail-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Parasail: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/parasail-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
